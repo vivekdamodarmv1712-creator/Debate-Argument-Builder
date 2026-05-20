@@ -1,0 +1,24 @@
+[project]
+name = "debate_argument_builder"
+version = "0.1.0"
+description = "Debate_Argument_Builder using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]>=0.203.1,<1.0.0",
+    "streamlit>=1.57.0",
+]
+
+[project.scripts]
+debate_argument_builder = "debate_argument_builder.main:run"
+run_crew = "debate_argument_builder.main:run"
+train = "debate_argument_builder.main:train"
+replay = "debate_argument_builder.main:replay"
+test = "debate_argument_builder.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

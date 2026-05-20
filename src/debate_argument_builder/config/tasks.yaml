@@ -1,0 +1,38 @@
+build_arguments:
+  description: >
+    The user has selected a debate topic and a position.
+    Generate 4 strong arguments supporting the chosen side.
+
+    Each argument must include:
+    - Clear claim
+    - Reasoning using "because/since/therefore"
+    - Optional real-world example
+
+  expected_output: >
+    A structured list of 4 arguments with explanations.
+
+  agent: argument_constructor
+
+predict_counterarguments:
+  description: >
+    Based on the arguments generated, predict 4 strong counterarguments that an opponent would make.
+    Be realistic, critical, and debate-accurate.
+
+  expected_output: >
+    A list of 4 counterarguments that directly challenge the original arguments.
+
+  agent: counterargument_anticipator
+  context:
+    - build_arguments
+
+write_rebuttals:
+  description: >
+    Take the predicted counterarguments and write strong rebuttals for each one.
+    Each rebuttal must logically weaken the counterargument using reasoning or evidence.
+
+  expected_output: >
+    A structured debate brief containing rebuttals mapped to each counterargument.
+
+  agent: rebuttal_writer
+  context:
+    - predict_counterarguments
